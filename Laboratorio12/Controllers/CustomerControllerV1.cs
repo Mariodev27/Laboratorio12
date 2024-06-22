@@ -1,6 +1,7 @@
 ﻿using Laboratorio12.Models;
 using Laboratorio12.Models.Request;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,6 +12,12 @@ namespace Laboratorio12.Controllers
     public class CustomerControllerV1 : ControllerBase
     {
         private readonly DemoContext demoContext;
+
+
+        public CustomerControllerV1(DemoContext context)
+        {
+            demoContext = context;
+        }
 
         [HttpPost]
         public Customer insertCustomer(CustomerV1 customerData)
